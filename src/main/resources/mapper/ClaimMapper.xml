@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        >
+<mapper namespace="com.ou.swzlmybatis.mapper.ClaimMapper">
+        <resultMap id="ClaimResultMap" type="com.ou.swzlmybatis.entity.po.Claim">
+            <result column="id" jdbcType="INTEGER" property="Id" />
+            <result column="claim_desc" jdbcType="VARCHAR" property="claimDesc" />
+            <result column="claim_user" jdbcType="VARCHAR" property="claimUser" />
+            <result column="claim_time" jdbcType="DATE" property="claimTime" />
+        </resultMap>
+
+    <select id="queryClaim" resultMap="ClaimResultMap">
+        select * from swzl.claim where id = #{Id}
+    </select>
+
+
+
+</mapper>

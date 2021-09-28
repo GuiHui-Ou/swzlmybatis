@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        >
+<mapper namespace="com.ou.swzlmybatis.mapper.GoodsMapper">
+    <resultMap id="GoodsResultMap" type="com.ou.swzlmybatis.entity.po.Goods">
+        <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+        <result column="goods_desc" jdbcType="VARCHAR" property="goodsDesc" />
+        <result column="goods_picker" jdbcType="VARCHAR" property="goodsPicker" />
+        <result column="pick_address" jdbcType="VARCHAR" property="pickAddress" />
+        <result column="goods_type" jdbcType="VARCHAR" property="goodsType" />
+        <result column="goods_status" jdbcType="INTEGER" property="goodsStatus" />
+        <result column="pick_time" jdbcType="DATE" property="pickTime" />
+    </resultMap>
+
+
+    <insert id="insertGoods" useGeneratedKeys="true" keyProperty="id" parameterType="com.ou.swzlmybatis.entity.po.Goods">
+        insert into swzl.goods (goods_name, goods_desc, goods_picker, pick_address, goods_type) VALUES
+        ( #{goodsName}, #{goodsDesc}, #{goodsPicker}, #{pickAddress}, #{goodsType}  )
+    </insert>
+
+    <select id="queryGoods" resultMap="GoodsResultMap" parameterType="com.ou.swzlmybatis.entity.request.GoodsRequest">
+        select * from swzl.goods where goods_name like '%${goodsName}%'
+    </select>
+
+    <select id="queryById" resultMap="GoodsResultMap" parameterType="com.ou.swzlmybatis.entity.request.GoodsRequest">
+        select * from swzl.goods where goods_id like '%${goodsId}%'
+    </select>
+
+    <delete id="deleteGoods" parameterType="com.ou.swzlmybatis.entity.request.GoodsRequest">
+        delete from swzl.goods where goods_id = #{goodsId}
+    </delete>
+
+
+    <update id="updateGoods" parameterType="com.ou.swzlmybatis.entity.po.Goods">
+            update swzl.goods
+            <set >
+                <if test="goodsName != null">
+                    goods_name = #{goodsName},
+                </if>
+                <if test="goodsDesc != null">
+                    goods_desc = #{goodsDesc},
+                </if>
+                <if test="goodsPicker != null">
+                    goods_picker = #{goodsPicker},
+                </if>
+                <if test="goodsType != null">
+                    goods_type = #{goodsType},
+                </if>
+                <if test="pickTime != null">
+                    pick_time = #{pickTime},
+                </if>
+            </set>
+            where goods_id = #{goodsId}
+    </update>
+
+</mapper>

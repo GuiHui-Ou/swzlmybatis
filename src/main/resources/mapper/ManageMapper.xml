@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"
+        >
+<mapper namespace="com.ou.swzlmybatis.mapper.ManageMapper">
+    <resultMap id="ManageResultMap" type="com.ou.swzlmybatis.entity.po.Manage">
+        <result column="id" jdbcType="INTEGER" property="Id" />
+        <result column="management_mobile" jdbcType="VARCHAR" property="managementMobile" />
+        <result column="management_password" jdbcType="VARCHAR" property="managementPassword" />
+    </resultMap>
+
+    <select id="queryManage" resultMap="ManageResultMap" parameterType="com.ou.swzlmybatis.entity.request.ManageRequest">
+        select * from swzl.manage where management_mobile = #{arg0} and management_password = #{arg1}
+    </select>
+
+
+</mapper>
