@@ -12,7 +12,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper  {
 
+    /**
+     * 用户注册
+     * @param userName
+     * @param userMobile
+     * @param userPassword
+     * @return
+     */
     boolean userRegister(String userName,String userMobile,String userPassword);
 
+    /**
+     * 查找用户
+     * @param userMobile
+     * @param userPassword
+     * @return
+     */
     User queryUser(String userMobile , String userPassword);
 }

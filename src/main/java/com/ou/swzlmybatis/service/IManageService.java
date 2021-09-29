@@ -8,6 +8,12 @@ import com.ou.swzlmybatis.entity.po.Manage;
  */
 public interface IManageService {
 
+    /**
+     *管理员登录
+     * @param managementMobile
+     * @param managementPassword
+     * @return
+     */
     boolean manageLogin(String managementMobile , String managementPassword);
 
 }

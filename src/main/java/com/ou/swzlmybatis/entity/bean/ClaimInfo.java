@@ -19,7 +19,7 @@ import java.util.Date;
 @ApiModel("认领失物")
 public class ClaimInfo {
 
-    private Integer Id;
+    private Integer claimId;
 
     private String claimDesc;
 
@@ -28,7 +28,7 @@ public class ClaimInfo {
     private Date claimTime;
 
     public ClaimInfo parseFromPO(Claim po) {
-        Id = po.getId();
+        claimId = po.getClaimId();
         claimDesc = po.getClaimDesc();
         claimUser = po.getClaimUser();
         claimTime = po.getClaimTime();

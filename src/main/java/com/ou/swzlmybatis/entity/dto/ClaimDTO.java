@@ -19,7 +19,7 @@ import java.util.Date;
 @ApiModel("认领失物")
 public class ClaimDTO {
 
-    private Integer Id;
+    private Integer claimId;
 
     private String claimDesc;
 
@@ -29,7 +29,7 @@ public class ClaimDTO {
 
     public Claim toClaimPO() {
         Claim claim = new Claim();
-        claim.setId(this.Id);
+        claim.setClaimId(this.claimId);
         claim.setClaimDesc(this.claimDesc);
         claim.setClaimUser(this.claimUser);
         claim.setClaimTime(this.claimTime);

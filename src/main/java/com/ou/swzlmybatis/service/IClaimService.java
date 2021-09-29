@@ -1,6 +1,9 @@
 package com.ou.swzlmybatis.service;
 
+import com.ou.swzlmybatis.entity.dto.ClaimDTO;
 import com.ou.swzlmybatis.entity.po.Claim;
+
+import java.util.List;
 
 /**
  * @author leo
@@ -8,9 +11,16 @@ import com.ou.swzlmybatis.entity.po.Claim;
 public interface IClaimService {
 
     /**
-     * 查找Claim
-     * @param Id
+     * 插入认领信息
+     * @param claimDTO
      * @return
      */
-    Claim queryClaim(Integer Id);
+    boolean insertClaim(ClaimDTO claimDTO);
+
+    /**
+     * 查找认领信息
+     * @param claimId
+     * @return
+     */
+    Claim queryClaim(Integer claimId);
 }

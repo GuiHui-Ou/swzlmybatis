@@ -12,6 +12,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ManageMapper  {
 
+    /**
+     * 管理员登陆
+     * @param managementMobile
+     * @param managementPassword
+     * @return
+     */
     Manage queryManage(String managementMobile , String managementPassword);
 
 }

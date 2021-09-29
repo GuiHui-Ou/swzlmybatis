@@ -5,15 +5,20 @@
         >
 <mapper namespace="com.ou.swzlmybatis.mapper.ClaimMapper">
         <resultMap id="ClaimResultMap" type="com.ou.swzlmybatis.entity.po.Claim">
-            <result column="id" jdbcType="INTEGER" property="Id" />
+            <result column="claim_id" jdbcType="INTEGER" property="claimId" />
             <result column="claim_desc" jdbcType="VARCHAR" property="claimDesc" />
             <result column="claim_user" jdbcType="VARCHAR" property="claimUser" />
             <result column="claim_time" jdbcType="DATE" property="claimTime" />
         </resultMap>
 
-    <select id="queryClaim" resultMap="ClaimResultMap">
-        select * from swzl.claim where id = #{Id}
+    <select id="queryClaim" resultMap="ClaimResultMap" parameterType="com.ou.swzlmybatis.entity.request.ClaimRequest">
+        select * from swzl.claim where claim_id = #{claimId}
     </select>
+
+    <insert id="insertClaim" useGeneratedKeys="true" keyProperty="id" parameterType="com.ou.swzlmybatis.entity.dto.ClaimDTO">
+        insert into swzl.claim (claim_desc, claim_user, claim_time) VALUES
+        ( #{claimDesc}, #{claimUser}, #{claimTime}  )
+    </insert>
 
 
 

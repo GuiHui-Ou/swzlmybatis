@@ -2,7 +2,9 @@ package com.ou.swzlmybatis.controller;
 
 
 import com.ou.swzlmybatis.common.Result;
+import com.ou.swzlmybatis.entity.dto.ClaimDTO;
 import com.ou.swzlmybatis.entity.po.Claim;
+import com.ou.swzlmybatis.entity.request.ClaimRequest;
 import com.ou.swzlmybatis.service.IClaimService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +23,16 @@ public class ClaimController {
     @Autowired
     IClaimService claimService;
 
-    @RequestMapping(value = "/query",method = RequestMethod.GET)
-    public Result<Claim> queryClaim(Integer Id){
-        Claim claim = claimService.queryClaim(1);
-        return Result.OK(claim);
+    @PostMapping("/insert")
+    public Result insertClaim(@RequestBody ClaimDTO claimDTO){
+        Boolean res = claimService.insertClaim(claimDTO);
+        return res ? Result.OK() : Result.error("插入失败");
+    }
+
+    @GetMapping("/query")
+    public Claim queryClaim(@RequestBody ClaimRequest request){
+        Claim claim = claimService.queryClaim(request.getClaimId());
+        return claim;
     }
 
 }

@@ -1,10 +1,13 @@
 package com.ou.swzlmybatis.service.impl;
 
+import com.ou.swzlmybatis.entity.dto.ClaimDTO;
 import com.ou.swzlmybatis.entity.po.Claim;
 import com.ou.swzlmybatis.mapper.ClaimMapper;
 import com.ou.swzlmybatis.service.IClaimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author leo
@@ -16,8 +19,13 @@ public class ClaimServiceImpl implements IClaimService {
     ClaimMapper claimMapper;
 
     @Override
-    public Claim queryClaim(Integer Id) {
-        Claim claim = claimMapper.queryClaim(Id);
-        return claim;
+    public boolean insertClaim(ClaimDTO claimDTO) {
+        claimMapper.insertClaim(claimDTO);
+        return true;
+    }
+
+    @Override
+    public Claim queryClaim(Integer claimId) {
+        return claimMapper.queryClaim(claimId);
     }
 }
